@@ -35,16 +35,28 @@
         </nav>
     </header>
     <main class="container">
-        <form action="">
+        <form action="" style="width:fit-content ; margin:auto; border:1px solid ; padding:20px;" >
             <fieldset>
                 <Legend>Cadastro Usuário</Legend>
+                <div style="border: 1px solid; margin-bottom:5px; padding:20px ; display: flex; justify-content:center; flex-direction: column;">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome">
+                <input type="text" id="nome" style="width:fit-content" placeholder="Digite o nome do usuario" required>
                 <label for="nome">CPF</label>
-                <input type="number" id="cpf">
+                <input type="text" id="cpf" style="width:fit-content" placeholder="Digite o CPF do usuario" required>
                 <label for="nome">Email</label>
-                <input type="email" id="nome">
-                <input type="submit"  value="Enviar">    
+                <input type="email" id="email" style="width:fit-content" placeholder="Digite o email do usuario" required>
+                </div>
+                <div style="border: 1px solid">
+                <fieldset>
+                <legend style="font-size:20px">Suspenso ?</legend>
+                <input type="radio" id="suspenso-s"  name="suspenso">
+                <label for="suspenso-s">Sim</label>
+                <input type="radio" id="suspenso-n"  name="suspenso">
+                <label for="suspenso-n">Não</label>
+                </fieldset>
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Enviar">    
             </fieldset>
         </form>    
     </main>
@@ -52,5 +64,19 @@
     <script src="../scripts/jquery-3.4.1.min.js"></script>
     <script src="../scripts/popper.min.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#cpf").mask('000.000.000-00', {reverse: true});
+            $('form').submit(function() {
+            if($('#suspenso-s').is(':checked') || $('#suspenso-n').is(':checked')) {
+                alert('Usuario cadastrado');
+            } else {
+                alert('Marcar se o usuario está suspenso ou não');
+            }
+        })
+        })
+
+    </script>
 </body>
 </html>

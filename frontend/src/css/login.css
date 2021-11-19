@@ -1,0 +1,32 @@
+.form-control{
+    width: 30vw !important;
+}
+
+ legend > p {
+    background-color:rgba(128, 121, 223, 0.1);
+    border-radius:5px;
+    padding:10px;
+    border-bottom-color:red;
+}
+
+
+form{
+    background-color: rgba(107, 75, 148, 0.1);
+    border-radius: 5px;
+    padding: 30px;
+
+    
+}
+
+.formbox {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:80px;
+}
+
+.submit{
+   margin-top: 20px ;
+   display: flex;
+   justify-content: center;
+}

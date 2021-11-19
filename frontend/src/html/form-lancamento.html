@@ -37,25 +37,52 @@
     <main>
         <div class="container"> 
         <form action="">
+            <div>
             <label for="credito">Credito</label>
             <input type="radio" id="credito" name="lancamento" value="credito">
             <label for="debito">Debito</label>
             <input type="radio" id="debito" name="lancamento" value="debito">
             <label for="valor">Valor</label>
-            <input type="number" required>
+            <input type="text" name="valor" id="valor" required> 
             <label for="data">Data</label>
             <input type="date" id="data" required>
             <label for="categoria">Categoria</label>
-            <input type="text" id="categoria" name="categoria" value="categoria" > <br> <br>
-            <label for="descricao">Descrição</label>  <br>
-            <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+            <select name="categoria" id="categoria">
+                <optgroup>Selecionar Categoria</optgroup>
+                <option value="luz">Luz</option>
+                <option value="plano de saude">plano de</option>
+            </select><br>
 
+            </div>
+            <div class="container">
+            <label for="descricao">Descrição</label>  <br>
+            <textarea name="descricao" id="descricao" cols="30" rows="10" required></textarea>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Lançar">
         </form>
         </div>
     </main>
 
     <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/jquery.mask.min.js"></script>
     <script src="../scripts/popper.min.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#valor').mask('#.##0,00',{reverse:true});
+            $('form').submit(function() {
+            if($('#credito').is(':checked') || $('#debito').is(':checked')) {
+                alert('Lançamento confirmado');
+            } else {
+                alert('Marcar credito ou debito');
+            }
+        })
+        
+        })
+
+        
+
+    </script>
 </body>
 </html>
