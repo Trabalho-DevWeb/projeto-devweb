@@ -31,11 +31,11 @@
     </header>
     <div class="container">
         <div class="formbox">
-        <form name="login" action="" onsubmit="valida2()">
+        <form name="login" action="">
             <legend> <p>Login</p> </legend>
             <fieldset>
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" required>
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" id="cpf" class="form-control" required>
             <label for="senha">Senha</label>
             <input type="password" class="form-control" required> <br>
             <p>Você é:</p>
@@ -54,8 +54,10 @@
     <script src="../scripts/jquery-3.4.1.min.js"></script>
     <script src="../scripts/popper.min.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function(){
+            $('#cpf').mask('000.000.000-00', {reverse: true});
             $('form').submit(function() {
             if($('#administrador').is(':checked') || $('#usuario').is(':checked')) {
                 alert('Login Aceito');
