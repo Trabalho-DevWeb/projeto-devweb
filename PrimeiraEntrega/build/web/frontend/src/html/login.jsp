@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% System.out.println(request.getContextPath()); %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/login.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/global.css">
     <title>Login</title>
 </head>
 
@@ -31,7 +33,7 @@
     </header>
     <div class="container">
         <div class="formbox">
-        <form name="login" action="">
+        <form name="login" action="http://localhost:8084/PrimeiraEntrega/entrada?acao=Login" method="POST">
             <legend> <p>Login</p> </legend>
             <fieldset>
             <label for="cpf" class="form-label">CPF</label>
@@ -51,10 +53,10 @@
         </div>
     </div>
 
-    <script src="../scripts/jquery-3.4.1.min.js"></script>
-    <script src="../scripts/popper.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery.mask.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/popper.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function(){
             $('#cpf').mask('000.000.000-00', {reverse: true});
