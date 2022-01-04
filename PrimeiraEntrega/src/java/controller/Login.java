@@ -21,22 +21,26 @@ public class Login implements Acao{
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String CPF = request.getParameter("CPF");
+        String CPF = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String tipo = request.getParameter("user");
+        
+        System.out.println(CPF);
+        System.out.println(senha);
+        System.out.println(tipo);
         
         Banco banco = new Banco();
         
         Administrador admin = banco.existeAdmin(CPF,senha);
         
       
-        if(admin != null){
+        if(admin != null && tipo.equals("administrador")){
             System.out.println("Administrador Existe");
             HttpSession sessao = request.getSession();
             sessao.setAttribute("adminLogado",admin);
-            return "entrada?acao=IndexAdm";
+            return "redirect:entrada?acao=IndexAdm";
         } else {
-            return "entrada?acao=ErroLogin";
+            return "redirect:entrada?acao=ErroLogin";
         }
         
         

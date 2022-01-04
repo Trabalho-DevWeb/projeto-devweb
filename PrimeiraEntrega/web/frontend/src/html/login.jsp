@@ -33,13 +33,13 @@
     </header>
     <div class="container">
         <div class="formbox">
-        <form name="login" action="http://localhost:8084/PrimeiraEntrega/entrada?acao=Login" method="POST">
+        <form name="login" id="login" action="http://localhost:8084/PrimeiraEntrega/entrada?acao=Login" method="POST">
             <legend> <p>Login</p> </legend>
             <fieldset>
             <label for="cpf" class="form-label">CPF</label>
-            <input type="text" id="cpf" class="form-control" required>
+            <input type="text" id="cpf" name="cpf" class="form-control" required>
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" required> <br>
+            <input type="password" name="senha" class="form-control" required> <br>
             <p>Você é:</p>
             <label for="administrador" class="form-label">Administrador</label>
             <input type="radio" id="administrador" value="administrador" name="user" onclick="valida1()">
@@ -61,7 +61,8 @@
         $(document).ready(function(){
             $('#cpf').mask('000.000.000-00', {reverse: true});
             $('form').submit(function() {
-            if($('#administrador').is(':checked') || $('#usuario').is(':checked')) {
+             
+            if($('#administrador').is(':checked') || $('#usuario').is(':checked') || $(#login).valid}) {
                 alert('Login Aceito');
             } else {
                 alert('Marcar se é usuario ou administrador');

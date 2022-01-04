@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/global.css">
     <title>Cadastrar Categoria</title>
 </head>
 <body>
@@ -27,11 +27,11 @@
 </header>
     <div class="container mt-3">
 
-        <form action="">
+        <form action="http://localhost:8084/PrimeiraEntrega/entrada?acao=CadastroCategoria" method="POST">
             <legend>Registrar Categoria</legend>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
-                <input type="text" class="form-control" id="categoria" required>
+                <input type="text" name="descricao" class="form-control" id="categoria" required>
                 <input type="submit" value="incluir" class="btn btn-primary mt-3" re>
 
             </div>          
@@ -44,9 +44,9 @@
 
 
 
-    <script src="../scripts/jquery-3.4.1.min.js"></script>
-    <script src="../scripts/popper.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>  
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/popper.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/bootstrap.min.js"></script>  
     
 </body>
 </html>

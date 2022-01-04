@@ -14,6 +14,8 @@ public class Administrador {
     private String nome;
     private String CPF;
     private String senha;
+    private String email;
+    private Integer id;
 
     public String getNome() {
         return nome;
@@ -38,6 +40,23 @@ public class Administrador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     
     
     

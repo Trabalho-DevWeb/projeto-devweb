@@ -24,7 +24,7 @@ public class IndexAdm implements Acao{
 //        
 //        request.setAttribute("admin",sessao.getAttribute("adminLogado"));
         
-        return "index-administrador.jsp";
+        return "forward:index-administrador.jsp";
     }
     
 }

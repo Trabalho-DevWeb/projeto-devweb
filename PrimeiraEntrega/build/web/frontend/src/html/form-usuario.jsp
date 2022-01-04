@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/frontend/src/css/global.css">
     <title>Cadastrar Usuário</title>
 </head>
 <body >
@@ -28,23 +28,28 @@
     </header>
     <main class="container"> 
 
-        <form action="">
+        <form action="http://localhost:8084/PrimeiraEntrega/entrada?acao=CadastroUsuario" method="POST">
 
             <Legend>Cadastro Usuário</Legend>
 
             <div class="form-group">
               <label for="nome">Nome</label>
-              <input type="nome" class="form-control" id="nome" placeholder="Digite o nome do usuario" required>
+              <input type="nome" name="nome" class="form-control" id="nome" placeholder="Digite o nome do usuario" required>
             </div>
 
             <div class="form-group">
               <label for="cpf">CPF</label>
-              <input type="text" class="form-control" id="cpf" placeholder="Digite o CPF do usuario" required>
+              <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF do usuario" required>
             </div>
 
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="email" class="form-control" id="email" placeholder="Digite o email do usuario" required>
+              <input type="email" name="email" class="form-control" id="email" placeholder="Digite o email do usuario" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <input type="senha" name="senha" class="form-control" id="senha" placeholder="Digite a senha do usuario" required>
             </div>
 
             <label>Suspenso ?</label>
@@ -60,10 +65,10 @@
         </form>
     </main>
 
-    <script src="../scripts/jquery-3.4.1.min.js"></script>
-    <script src="../scripts/popper.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery.mask.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/popper.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/frontend/src/scripts/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function(){
             $("#cpf").mask('000.000.000-00', {reverse: true});
