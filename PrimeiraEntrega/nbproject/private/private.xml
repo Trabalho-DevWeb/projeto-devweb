@@ -3,9 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gabriel%20Vieira/Desktop/projeto-devweb-1-entrega/PrimeiraEntrega/web/frontend/src/html/form-conta.jsp</file>
-            <file>file:/C:/Users/Gabriel%20Vieira/Desktop/projeto-devweb-1-entrega/PrimeiraEntrega/web/frontend/src/html/form-usuario.jsp</file>
-            <file>file:/C:/Users/Gabriel%20Vieira/Desktop/projeto-devweb-1-entrega/PrimeiraEntrega/web/frontend/src/html/login.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-usuario.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/FormCategoria.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-categoria.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/aplicacao/Usuario.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/aplicacao/Administrador.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/index-administrador.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-administrador.html</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/CadastroCategoria.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/FormUsuario.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/ListaAdmins.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/CadastroAdmin.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-administrador.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/Entrada.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/listaAdmins.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/ListaCategorias.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/ListaUsuarios.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/Login.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/LoginForm.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-lancamento.html</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/form-conta.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/web/frontend/src/html/sucessoCadastro.jsp</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/aplicacao/Banco.java</file>
+            <file>file:/C:/Users/Ramos/Documents/NetBeansProjects/projeto-devweb/PrimeiraEntrega/src/java/controller/FormAdmin.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,23 +1,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <%@include file="cabeçalho.html" %>
-        <title>Index</title>
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <%@include file="/frontend/src/html/cabeçalho.html" %>
+    <title>Cadastrar Categoria</title>
+</head>
+<body>
+<header>
         <%@include file="navbar.jsp" %>
-            <div class="container mt-3">
-                <form action="">
-                    <legend>Registrar Categoria</legend>
-                    <div class="form-group">
-                        <label for="categoria">Categoria</label>
-                        <input type="text" class="form-control" id="categoria" required>
-                        <input type="submit" value="incluir" class="btn btn-primary mt-3" re>
-                    </div>          
-                </form>
-            </div>
-        <%@include file="scripts.html" %>
-        </script>
-    </body>
+</header>
+    <div class="container mt-3">
+
+        <form action="http://localhost:8084/entrada?acao=CadastroCategoria" method="POST">
+            <legend>Registrar Categoria</legend>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <input type="text" name="descricao" class="form-control" id="categoria" required>
+                <input type="submit" value="incluir" class="btn btn-primary mt-3" re>
+
+            </div>          
+          
+
+        </form>
+
+    </div>
+
+    <%@include file="scripts.jsp" %>
+
+</body>
 </html>
