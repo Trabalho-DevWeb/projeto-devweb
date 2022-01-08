@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Não foi possível fazer o login</h1>
-        <a href="index.html">Voltar</a>
+        <a href="frontend/src/html/index.jsp">Voltar</a>
     </body>
 </html>

@@ -23,7 +23,6 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col"><b>Nome</b></th>
-                        <th scope="col"><b>Email</b></th>
                         <th scope="col"><b>CPF</b><th>
                         <th scope="col"><b> </b><th>
                         <th scope="col"><b> </b><th>
@@ -35,7 +34,6 @@
                     %>
                     <tr>
                         <td><%=administrador.getNome()%></td>
-                        <td><%=administrador.getEmail()%></td>
                         <td><%=administrador.getCPF()%></td>
                         <td><a href="entrada?acao=MostraAdmin&id=<%=administrador.getId()%>">Alterar</a></td>
                         <td><a href="entrada?acao=RemoveAdmin&id=<%=administrador.getId()%>">Remover</a></td>

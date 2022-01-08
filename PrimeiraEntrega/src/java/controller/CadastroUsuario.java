@@ -6,10 +6,12 @@
 package controller;
 
 import aplicacao.BancoUsuario;
+import aplicacao.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.UsuarioDAO;
 
 /**
  *
@@ -19,20 +21,40 @@ public class CadastroUsuario implements Acao {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+       try{ 
+        
        String nome = request.getParameter("nome");
        String CPF = request.getParameter("cpf");
-       String email = request.getParameter("email");
        String senha = request.getParameter("senha");
+       
+       
+       // BancoUsuario banco = new BancoUsuario();
         
-        BancoUsuario banco = new BancoUsuario();
-        
-        if(banco.usuarioExiste(CPF,senha) == null){
-            banco.adicionaUsuario(CPF,nome,senha);
+       Usuario usuario = new Usuario();
+       
+       usuario.setNome(nome);
+       usuario.setCPF(CPF);
+       usuario.setSenha(senha);
+       usuario.setBloqueado("N");
+       
+       
+       UsuarioDAO usuariodao = new UsuarioDAO();
+       
+       
+       
+       
+        if(usuariodao.gravar(usuario)){
             request.setAttribute("nomeUser",nome );
             return "forward:sucessoCadastroUsuario.jsp";
         } else {
-            return "redirect:entrada?acao=ErroLogin";
+            return "forward:erroCadastro.jsp";
         }
+        
+       } catch(Exception e){
+           System.out.println("Exceção - Cadastro Usuario");
+           return "forward:erroCadastro.jsp";
+       }
     }
     
 }

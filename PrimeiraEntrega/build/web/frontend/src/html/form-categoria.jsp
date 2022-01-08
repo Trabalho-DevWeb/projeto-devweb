@@ -11,7 +11,7 @@
 </header>
     <div class="container mt-3">
 
-        <form action="http://localhost:8084/entrada?acao=CadastroCategoria" method="POST">
+        <form action="/entrada?acao=CadastroCategoria" method="POST">
             <legend>Registrar Categoria</legend>
             <div class="form-group">
                 <label for="categoria">Categoria</label>

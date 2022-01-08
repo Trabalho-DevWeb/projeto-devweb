@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.AdminDAO;
 
 /**
  *
@@ -25,24 +26,40 @@ public class Login implements Acao{
         String senha = request.getParameter("senha");
         String tipo = request.getParameter("user");
         
-        System.out.println(CPF);
-        System.out.println(senha);
-        System.out.println(tipo);
         
-        Banco banco = new Banco();
         
-        Administrador admin = banco.existeAdmin(CPF,senha);
+
         
-      
-        if(admin != null && tipo.equals("administrador")){
+        //Banco banco = new Banco();
+        
+        //Administrador admin = banco.existeAdmin(CPF,senha);
+        
+        AdminDAO admindao = new AdminDAO();
+        
+        Administrador admin = admindao.getAdministradorPorCPF(CPF);
+        
+            Administrador administrador = new Administrador();
+            administrador.setCPF(CPF);
+            administrador.setSenha(senha);
+        
+       
+        
+       try{
+        if(administrador.getCPF().equals(admin.getCPF())&& administrador.getSenha().equals(admin.getSenha()) && tipo.equals("administrador")){
             System.out.println("Administrador Existe");
             HttpSession sessao = request.getSession();
             sessao.setAttribute("adminLogado",admin);
             return "redirect:entrada?acao=IndexAdm";
         } else {
-            return "redirect:entrada?acao=ErroLogin";
+            return "forward:erroLogin.jsp";
         }
-        
+       
+       } catch (NullPointerException e){
+           System.out.println("Erro "+ e.getMessage());
+           System.out.println("CHEGOU AQUI !!!#!@!#!#!#!");
+           return "forward:erroLogin.jsp";
+       } 
+         
         
     }
     

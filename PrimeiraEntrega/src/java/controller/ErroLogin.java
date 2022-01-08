@@ -18,7 +18,7 @@ public class ErroLogin implements Acao{
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "red:erroLogin.jsp";
+        return "forward:erroLogin.jsp";
     }
     
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CategoriaDAO;
 
 /**
  *
@@ -23,9 +24,13 @@ public class MostraCategoria implements Acao {
         String id = request.getParameter("id");
        Integer idAux = Integer.parseInt(id);
        
-       BancoCategoria banco = new BancoCategoria();
+       //BancoCategoria banco = new BancoCategoria();
        
-       Categoria categoria = banco.buscaCategoria(idAux);
+       //Categoria categoria = banco.buscaCategoria(idAux);
+       
+       CategoriaDAO categoriadao = new CategoriaDAO();
+       
+       Categoria categoria = categoriadao.getCategoriaPorID(idAux);
        
        request.setAttribute("categoria", categoria);
        

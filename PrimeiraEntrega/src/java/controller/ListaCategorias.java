@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CategoriaDAO;
 
 /**
  *
@@ -21,9 +22,13 @@ public class ListaCategorias implements Acao{
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BancoCategoria banco = new BancoCategoria();
+        //BancoCategoria banco = new BancoCategoria();
         
-        List<Categoria> lista = banco.getListaCategoria();
+        //List<Categoria> lista = banco.getListaCategoria();
+        
+        CategoriaDAO categoriadao = new CategoriaDAO();
+        
+        List<Categoria> lista = categoriadao.getLista();
         
         request.setAttribute("categorias", lista);
         

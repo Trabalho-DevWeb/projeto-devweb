@@ -18,9 +18,10 @@
 </header>
 <main class="container">
     <h1>Bem Vindo à plataforma de gerencimanto do seu Banco !</h1>
+   
 </main>
 <footer class="container">
-    <span>Todos os Direitos Reservados</span>
+    <span>Essa aplicação utiliza JDBC, JSP, Servlet, Bootstrap</span>
     <br>
     <span>12/11/2021</span>   
 </footer>

@@ -11,7 +11,7 @@
 <html>
     <head>
         <%@include file="/frontend/src/html/cabeçalho.html" %>
-        <title>Lista de Administradores</title>
+        <title>Lista de Categorias</title>
     </head>
     <body>
         <header>

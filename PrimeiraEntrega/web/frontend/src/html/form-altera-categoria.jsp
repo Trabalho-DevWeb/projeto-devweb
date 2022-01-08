@@ -18,7 +18,7 @@
 
         <main class="container mt-3"> 
 
-            <form action="http://localhost:8084/entrada?acao=AlteraCategoria" method="POST">
+            <form action="/entrada?acao=AlteraCategoria" method="POST">
 
                 <legend>Alterar Categoria</legend>
                 <div class="form-group">

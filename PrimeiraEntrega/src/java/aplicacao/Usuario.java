@@ -13,9 +13,8 @@ public class Usuario {
     private String nome;
     private String CPF; 
     private String senha;
-    private String email;
     private Integer id;
-    private boolean bloqueado;
+    private String bloqueado;
 
     public Integer getId() {
         return id;
@@ -23,19 +22,7 @@ public class Usuario {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
-    
-    
+    }   
     
     public String getNome() {
         return nome;
@@ -61,11 +48,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public boolean isBloqueado() {
+    public String isBloqueado() {
         return bloqueado;
     }
 
-    public void setBloqueado(boolean bloqueado) {
+    public void setBloqueado(String bloqueado) {
         this.bloqueado = bloqueado;
     }
     

@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AdminDAO;
 
 /**
  *
@@ -20,15 +21,28 @@ public class RemoveAdmin implements Acao{
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        try{
         Integer id = Integer.parseInt(request.getParameter("id"));
         
-        Banco banco = new Banco();
+        //Banco banco = new Banco();
         
-        Administrador adm = banco.buscaAdmin(id);
+        //Administrador adm = banco.buscaAdmin(id);
         
-        banco.removeAdm(adm);
+        AdminDAO admindao = new AdminDAO();
         
-        return "redirect:entrada?acao=ListaAdmins";
+        
+        if(admindao.excluir(id)){
+           return "redirect:entrada?acao=ListaAdmins"; 
+        } else {
+            return "forward:erroRemover.jsp";
+        }
+        } catch(Exception e){
+            System.out.println("Excecao - Remover Administrador");
+            return "forward:erroRemover.jsp";
+        }
+        
+        
     }
     
 }
