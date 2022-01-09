@@ -16,7 +16,7 @@
   
     <main class="container mt-3"> 
 
-        <form action="http://localhost:8084/entrada?acao=AlteraAdministrador" method="POST">
+        <form action="/entrada?acao=AlteraAdministrador" method="POST">
 
             <Legend>Alterar cadastro do Administrador</Legend>
 
@@ -30,10 +30,7 @@
               <input type="text" name="cpfAdm" value="${admin.CPF}" class="form-control" id="cpf" placeholder="Digite o CPF do administrador" required>
             </div>
 
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" name="emailAdm" value="${admin.email}" class="form-control" id="email" placeholder="Digite o email do administrador" required>
-            </div>
+
 
             <div class="form-group">
               <label for="senha">senha</label>
@@ -50,6 +47,12 @@
     </main>
 
     <%@include file="scripts.jsp" %>
-   
+    <script>
+        $(document).ready(function(){
+            $("#cpf").mask('000.000.000-00', {reverse: true});
+           
+        });
+
+    </script>
 </body>
 </html>

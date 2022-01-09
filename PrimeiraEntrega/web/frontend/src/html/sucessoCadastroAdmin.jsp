@@ -17,7 +17,7 @@
         </header>
         <div class="container mt-3 mb-3"> 
             <p> Administrador ${nomeAdm} foi cadastrado com sucesso ! </p>
-            <button class="btn btn-primary mt-3"><a href="entrada?acao=IndexAdm">Voltar</a></button>
+            <a style="color:white" href="entrada?acao=IndexAdm"><button class="btn btn-primary mt-3">Voltar</button></a>
         </div>
     <%@include file="scripts.jsp" %>    
     </body>

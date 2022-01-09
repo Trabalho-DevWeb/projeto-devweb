@@ -6,10 +6,12 @@
 package controller;
 
 import aplicacao.BancoCategoria;
+import aplicacao.Categoria;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CategoriaDAO;
 
 /**
  *
@@ -19,16 +21,28 @@ public class CadastroCategoria implements Acao{
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        try{
         String descricao = request.getParameter("descricao");
         
-        BancoCategoria banco = new BancoCategoria();
-        
-        if(banco.categoriaExiste(descricao) == null){
-            banco.adicionaCategoria(descricao);
+        //BancoCategoria banco = new BancoCategoria();        
+       // Banco banco = new Banco();
+       Categoria categoria = new Categoria();
+       
+       categoria.setDescricao(descricao);
+   
+       CategoriaDAO categoriadao = new CategoriaDAO();
+       
+       if(categoriadao.gravar(categoria)){
             request.setAttribute("descricao",descricao );
             return "forward:sucessoCadastro.jsp";
-        } else {
-            return "redirect:entrada?acao=ErroLogin";
+       } else{
+           return "forward:erroCadastro.jsp";
+       }
+        
+        } catch(Exception e){
+            System.out.println("Exceção - Cadastor Categoria");
+            return "forward:erroCadastro.jsp";
         }
     }
     

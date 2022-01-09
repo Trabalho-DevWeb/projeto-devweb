@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AdminDAO;
 
 /**
  *
@@ -22,24 +23,37 @@ public class AlteraAdministrador implements  Acao {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         
+        try{
         String cpf = request.getParameter("cpfAdm");
         String email = request.getParameter("emailAdm");
         String nome = request.getParameter("nomeAdm");
         String senha = request.getParameter("senhaAdm");
         Integer id = Integer.parseInt(request.getParameter("idAdm"));
         
-        Banco banco = new Banco();
+        //Banco banco = new Banco();
         
-        Administrador admin = banco.buscaAdmin(id);
+        //Administrador admin = banco.buscaAdmin(id);
+        
+        AdminDAO admindao = new AdminDAO();
+        
+        Administrador admin = admindao.getAdministradorPorID(id);
+        
+        
         
         admin.setCPF(cpf);
-        admin.setEmail(email);
         admin.setNome(nome);
         admin.setSenha(senha);
         
+        if(admindao.atualizar(admin)){
+          return "redirect:entrada?acao=ListaAdmins";  
+        } else {
+            return "forward:erroAtualizar.jsp";
+        }
+        } catch(Exception e){
+            System.out.println("Exceção - Atualizar Administrador");
+            return "forward:erroAtualizar.jsp";
+        }
         
-        
-        return "redirect:entrada?acao=ListaAdmins";
     }
     
 }

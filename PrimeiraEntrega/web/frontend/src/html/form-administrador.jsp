@@ -12,7 +12,7 @@
   
     <main class="container mt-3"> 
 
-        <form action="http://localhost:8084/entrada?acao=CadastroAdmin" method="POST">
+        <form action="/entrada?acao=CadastroAdmin" method="POST">
 
             <Legend>Cadastro Administrador</Legend>
 
@@ -26,10 +26,10 @@
               <input type="text" name="cpfAdm" class="form-control" id="cpf" placeholder="Digite o CPF do administrador" required>
             </div>
 
-            <div class="form-group">
+<!--            <div class="form-group">
               <label for="email">E-mail</label>
               <input type="email" name="emailAdm" class="form-control" id="email" placeholder="Digite o email do administrador" required>
-            </div>
+            </div>-->
 
             <div class="form-group">
               <label for="senha">senha</label>

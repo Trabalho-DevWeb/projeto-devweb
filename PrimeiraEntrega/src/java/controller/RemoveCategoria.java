@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CategoriaDAO;
 
 /**
  *
@@ -20,15 +21,26 @@ public class RemoveCategoria implements Acao {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //BancoCategoria banco = new BancoCategoria();
+        
+        //Categoria categoria = banco.buscaCategoria(id);
+        
+        try{
         Integer id = Integer.parseInt(request.getParameter("id"));
         
-        BancoCategoria banco = new BancoCategoria();
+        CategoriaDAO categoriadao = new CategoriaDAO();
         
-        Categoria categoria = banco.buscaCategoria(id);
         
-        banco.removeCategoria(categoria);
-        
-        return "redirect:entrada?acao=ListaCategorias";
+        if(categoriadao.excluir(id)){
+            return "redirect:entrada?acao=ListaCategorias";    
+        } else {
+            return "forward:erroRemover.jsp";
+        }
+       
+        } catch(Exception e){
+            System.out.println("Excecao - Remover Categoria");
+            return "forward:erroRemover.jsp";
+        }
     }
     
 }

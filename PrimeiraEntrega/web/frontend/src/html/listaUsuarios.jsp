@@ -11,7 +11,7 @@
 <html>
     <head>
         <%@include file="/frontend/src/html/cabeçalho.html" %>
-        <title>Lista de Administradores</title>
+        <title>Lista de Usuarios</title>
     </head>
     <body>
         <header>
@@ -23,7 +23,7 @@
                     <tr>
                         <th scope="col"><b>Nome</b></th>
                         <th scope="col"><b>CPF</b></th>
-                        <th scope="col"><b>Email</b></th>
+                        <th scope="col">Suspenso</th>
                         <th scope="col"><b> </b></th>
                         <th scope="col"><b> </b></th>
 
@@ -36,7 +36,7 @@
                     <tr>
                         <td><%=usuario.getNome()%></td>
                         <td><%=usuario.getCPF()%></td>
-                        <td><%=usuario.getEmail()%></td>
+                        <td><%=usuario.isBloqueado()%></td>
                         <td><a href="entrada?acao=MostraUsuario&id=<%=usuario.getId()%>">Alterar</a></td>
                         <td><a href="entrada?acao=RemoveUsuario&id=<%=usuario.getId()%>">Remover</a></td>
                     </tr>

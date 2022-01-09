@@ -11,6 +11,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.UsuarioDAO;
+
 
 /**
  *
@@ -20,15 +22,30 @@ public class RemoveUsuario implements Acao {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        
+       // BancoUsuario banco = new BancoUsuario();
+        
+       // Usuario usuario = banco.buscaUsuario(id);
+        
+          try{
         Integer id = Integer.parseInt(request.getParameter("id"));
         
-        BancoUsuario banco = new BancoUsuario();
         
-        Usuario usuario = banco.buscaUsuario(id);
         
-        banco.removeUsuario(usuario);
+        UsuarioDAO usuariodao = new UsuarioDAO();
         
-        return "redirect:entrada?acao=ListaUsuarios";
+        
+        if(usuariodao.excluir(id)){
+           return "redirect:entrada?acao=ListaUsuarios"; 
+        } else {
+            return "forward:erroRemover.jsp";
+        }
+        } catch(Exception e){
+            System.out.println("Excecao - Remover Usuario");
+            return "forward:erroRemover.jsp";
+        }
+        
     }
     
 }

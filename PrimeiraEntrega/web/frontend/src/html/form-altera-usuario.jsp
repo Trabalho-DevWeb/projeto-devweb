@@ -12,7 +12,7 @@
     </header>
     <main class="container mt-3"> 
 
-        <form action="http://localhost:8084/entrada?acao=AlteraUsuario" method="POST">
+        <form action="/entrada?acao=AlteraUsuario" method="POST">
 
             <Legend>Cadastro Usuário</Legend>
 
@@ -25,11 +25,7 @@
               <label for="cpf">CPF</label>
               <input type="text" name="cpf" class="form-control" value="${usuario.CPF}" id="cpf" placeholder="Digite o CPF do usuario" required>
             </div>
-
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" name="email" class="form-control" value="${usuario.email}" id="email" placeholder="Digite o email do usuario" required>
-            </div>
+            
             
             <div class="form-group">
               <label for="senha">Senha</label>
@@ -38,9 +34,9 @@
 
             <label>Suspenso ?</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="suspenso-s">
+                <input class="form-check-input" type="radio" name="suspenso" value="S" id="suspenso-s">
                 <label class="form-check-label mr-4" for="suspenso-s">Sim</label>
-                <input class="form-check-input" type="checkbox" value="" id="suspenso-n">
+                <input class="form-check-input" type="radio" name="suspenso" value="N" id="suspenso-n">
                 <label class="form-check-label" for="suspenso-n">Não</label>
             </div>
             
@@ -56,14 +52,8 @@
     <script>
         $(document).ready(function(){
             $("#cpf").mask('000.000.000-00', {reverse: true});
-            $('form').submit(function() {
-            if($('#suspenso-s').is(':checked') || $('#suspenso-n').is(':checked')) {
-                alert('Usuario cadastrado');
-            } else {
-                alert('Marcar se o usuario está suspenso ou não');
-            }
-        })
-        })
+           
+        });
 
     </script>
 </body>

@@ -24,7 +24,7 @@ public class Banco {
     Administrador admin = new Administrador();
     admin.setCPF("249.252.810-38");
     admin.setNome("Leonardo");
-    admin.setEmail("leonardo@gmail.com");
+ 
     admin.setSenha("111");
     admin.setId(idAdm++);
     Banco.lista1.add(admin);
@@ -70,7 +70,7 @@ public class Banco {
         admin.setCPF(CPF);
         admin.setNome(Nome);
         admin.setSenha(Senha);
-        admin.setEmail(email);
+
         admin.setId(Banco.idAdm++);
         Banco.lista1.add(admin);
                 

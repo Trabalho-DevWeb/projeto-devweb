@@ -40,12 +40,11 @@ public class Entrada extends HttpServlet {
             return;
         }
         } catch(NullPointerException e){
-            System.out.println("deu nulo");
+            System.out.println("sessao nula");
         }
       
       String nome = null ;
-      if(paramAcao.equals("Login")){
-          System.out.println("Login aqui"); 
+      if(paramAcao.equals("Login")){ 
          Login acao = new Login(); 
          nome = acao.executa(request,response);
        } else if(paramAcao.equals("LoginForm")){
@@ -110,6 +109,9 @@ public class Entrada extends HttpServlet {
             nome = acao.executa(request,response);
         }else if(paramAcao.equals("Logout")){
             Logout acao = new Logout();
+            nome = acao.executa(request,response);
+        } else if(paramAcao.equals("ErroLogin")){
+            ErroLogin acao = new ErroLogin();
             nome = acao.executa(request,response);
         }
       

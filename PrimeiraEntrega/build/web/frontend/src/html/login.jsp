@@ -13,7 +13,7 @@
         <div class="container mt-3 mb-3">
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"><a class="nav-link" href="index.jsp">Página Inicial</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="frontend/src/html/index.jsp">Página Inicial</a></li>
                     <li class="nav-item active"><a class="nav-link" href="../../../entrada?acao=LoginForm">Login</a></li>
                 </ul>
             </nav>
@@ -21,7 +21,7 @@
     </header>
     <div class="container">
         <div class="formbox">
-        <form name="login" id="login" action="http://localhost:8084/entrada?acao=Login" method="POST">
+        <form name="login" id="login" action="/entrada?acao=Login" method="POST">
             <legend> <p>Login</p> </legend>
             <fieldset>
             <label for="cpf" class="form-label">CPF</label>

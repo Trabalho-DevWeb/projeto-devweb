@@ -23,7 +23,7 @@
                 <p>CPF: ${adminLogado.CPF}</p>
                 <p>Nome: ${adminLogado.nome}</p>
 
-                <button class="btn btn-outline-dark"><a href="entrada?acao=Logout">Sair</a></button>
+                <a style="color:white" href="entrada?acao=Logout"><button class="btn btn-primary">Sair</button></a>
             </div>
             </main>    
     </body>
