@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index-administrador
-    Created on : 29/12/2021, 01:25:07
+    Document   : index-usuario
+    Created on : 19/01/2022, 23:01:25
     Author     : Ramos
 --%>
 
@@ -9,12 +9,12 @@
 <html>
     <head>
         <%@include file="/frontend/src/html/cabeçalho.html" %>
-        <title>Dashboard-Admin </title>
+        <title>Dashboard-Usuario </title>
     </head>
     <body>
         <header>
             <div>
-                <%@include file="navbar.jsp" %>
+                <%@include file="navbar-2nd.jsp" %>
             </div>
 
         </header>

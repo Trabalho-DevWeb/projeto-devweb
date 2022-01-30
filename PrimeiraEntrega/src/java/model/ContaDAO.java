@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 
-import aplicacao.Categoria;
+import aplicacao.Conta;
+import aplicacao.Usuario;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,11 +22,12 @@ import java.util.List;
  *
  * @author Ramos
  */
-public class CategoriaDAO {
+public class ContaDAO {
     private Connection conexao;
-    
-    public CategoriaDAO(){
-         try {
+    public ContaDAO(){
+        
+        
+        try {
             // Cria a conexão com o banco de dados
             conexao = Conexao.criaConexao();
         }
@@ -32,31 +36,42 @@ public class CategoriaDAO {
             System.out.println(e);
         }
     }
+   
     
-    public List<Categoria> getLista() {
+    public List<Conta> getLista(int codigo) {
         //Cria o objeto resultado que irá armazenar os registros retornados do BD
-        List<Categoria> resultado = new ArrayList<>();
+        List<Conta> resultado = new ArrayList<>();
         try {            
             // Cria o objeto para quer será utilizado para enviar comandos SQL
             // para o BD
-            Statement stmt = conexao.createStatement();
+           
             // Armazena o resultado do comando enviado para o banco de dados
-            ResultSet rs = stmt.executeQuery("select * from categorias");
+           
             // rs.next() Aponta para o próximo registro do BD, se houver um 
+            String sql = "SELECT * FROM contas WHERE id_usuario = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            
+            ResultSet rs = ps.executeQuery();
+            
             while( rs.next() ) {
                 //Cria o objeto da classe Contato para armazenar os dados
                 //que vieram do BD
-                Categoria categoria = new Categoria();
+                Conta conta = new Conta();
                 
-                //Pega o conteúdo da coluna "id" do ResultSet (rs)
-                categoria.setId(rs.getInt("id"));
+                conta.setId(rs.getInt("id"));
+                
+                conta.setNome(rs.getString("nome_conta"));
                 //Pega o conteúdo da coluna "nome" do ResultSet (rs)
-                categoria.setDescricao( rs.getString("descricao") );
-                //Pega o conteúdo da coluna "telefone" do ResultSet (rs)
+                conta.setBanco(rs.getString("banco"));
                 
+                conta.setAgencia( rs.getString("agencia") );
+               
+       
+                conta.setConta_corrente(rs.getString("conta_corrente"));
                 
                 //Adiciona o objeto criado na ArrayList resultado
-                resultado.add(categoria);
+                resultado.add(conta);
             }
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
@@ -66,76 +81,72 @@ public class CategoriaDAO {
         return resultado;
     }
     
-    public Categoria getCategoriaPorID( int codigo ) {
-        Categoria categoria = new Categoria();
+    public Conta getContaPorID( int codigo , int codigo_usuario ) {
+        Conta Conta = new Conta();
         try {
-            String sql = "SELECT * FROM categorias WHERE id = ?";
+            String sql = "SELECT * FROM Contas WHERE id = ? AND id_usuario = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, codigo);
-            
+            ps.setInt(2, codigo_usuario);
             ResultSet rs = ps.executeQuery();
             
             if ( rs.next() ) {
-                categoria.setId(rs.getInt("id"));
-                categoria.setDescricao(rs.getString("descricao"));
+                Conta.setId(rs.getInt("id"));
+                Conta.setNome( rs.getString("nome_conta") );
+                Conta.setBanco(rs.getString("banco"));
+                Conta.setAgencia(rs.getString("agencia"));
+                Conta.setConta_corrente(rs.getString("conta_corrente"));
                
             }
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
-        return categoria;
-    }
-       public String getCategoriaPorString( int codigo ) {
-        Categoria categoria = new Categoria();
-        try {
-            String sql = "SELECT * FROM categorias WHERE id = ?";
-            PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setInt(1, codigo);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if ( rs.next() ) {
-                categoria.setId(rs.getInt("id"));
-                categoria.setDescricao(rs.getString("descricao"));
-               
-            }
-            
-        } catch( SQLException e ) {
-            System.out.println("Erro de SQL: " + e.getMessage());
-        }
-        return categoria.getDescricao();
-    }
-     public Categoria getCategoriaPorDescricao( String descricao ) {
-        Categoria categoria = new Categoria();
-        try {
-            String sql = "SELECT * FROM categorias WHERE descricao = ?";
-            PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, descricao);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if ( rs.next() ) {
-                categoria.setId(rs.getInt("id"));
-                categoria.setDescricao( rs.getString("descricao") );
-                
-               
-            }
-            
-        } catch( SQLException e ) {
-            System.out.println("Erro de SQL: " + e.getMessage());
-        }
-        return categoria;
+        return Conta;
     }
     
-    public boolean gravar( Categoria categoria ) {
+     public Conta getContaPorId( Integer id ) {
+        Conta Conta = new Conta();
         try {
-            String sql = "INSERT INTO categorias (descricao) VALUES (?)";
+            String sql = "SELECT * FROM Contas WHERE id = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                Conta.setId(rs.getInt("id"));
+                Conta.setNome( rs.getString("nome_conta") );
+                Conta.setBanco(rs.getString("banco"));
+                Conta.setAgencia(rs.getString("agencia"));
+                Conta.setConta_corrente(rs.getString("conta_corrente"));
+               
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return Conta;
+    }
+    
+    public boolean gravar( Conta conta, String usuario ) {
+        try {
+            
+            Integer idUsuario = Integer.parseInt(usuario);
+            
+            String sql = "INSERT INTO contas (id_usuario, nome_conta, banco, agencia, conta_corrente) VALUES (?,?,?,?,?)";
+            
             
             PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, categoria.getDescricao());
+            ps.setInt(1, idUsuario);
+            
+            ps.setString(2, conta.getNome());
+            ps.setString(3, conta.getBanco());
+            ps.setString(4, conta.getAgencia());
+            ps.setString(5, conta.getConta_corrente());
+            
+          
            
-         
             ps.execute();
             
             ResultSet rs = ps.getGeneratedKeys();
@@ -146,8 +157,8 @@ public class CategoriaDAO {
             }
             
             
-            categoria.setId(chaveGerada);
-            System.out.println("A categoria foi adicionda com chave:"+categoria.getId());
+            conta.setId(chaveGerada);
+            System.out.println("A Conta foi adicionda com chave:"+conta.getId());
             return true;
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
@@ -156,20 +167,22 @@ public class CategoriaDAO {
     }
     
     
-    public boolean atualizar(Categoria categoria){
-        
+    public boolean atualizar(Conta conta){
+         
         try{
-            String sql = "UPDATE categorias SET descricao=? WHERE id=?";
+            String sql = "UPDATE contas SET nome_conta=?, banco=?, agencia=?, conta_corrente=? WHERE id=?";
 
             PreparedStatement ps = conexao.prepareStatement(sql);
             
-            ps.setString(1, categoria.getDescricao());
-            ps.setInt(2, categoria.getId());
-           
+            ps.setString(1, conta.getNome());
+            ps.setString(2, conta.getBanco());
+            ps.setString(3, conta.getAgencia());
+            ps.setString(4, conta.getConta_corrente());
+            ps.setInt(5, conta.getId());
 
             ps.execute();
             
-            System.out.println("Os dados do Categoria foram atualizados");
+            System.out.println("Os dados do Conta foram atulizados");
             
             return true;
         
@@ -179,17 +192,23 @@ public class CategoriaDAO {
         }
     }
     
-    public boolean excluir( int id ) {
+    public boolean excluir( Integer id ) {
         try {
-            String sql = "DELETE FROM categorias WHERE id = ?";
+            String sql = "DELETE FROM contas WHERE id = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);
             ps.execute();
-            System.out.println("Categoria removida");
+            System.out.println("Conta removido");
             return true;
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
             return false;
         }
     }
+    
+   
+    
+   
+    
 }
+

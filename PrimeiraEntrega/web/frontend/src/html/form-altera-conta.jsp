@@ -1,5 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : form-altera-conta
+    Created on : 29/01/2022, 20:01:30
+    Author     : Ramos
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="aplicacao.Conta" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +18,7 @@
     </div>
     <div class="container mt-3">
 
-        <form action="/entrada?acao=CadastroConta" method="POST" accept-charset="utf-8">
+      <form action="/entrada?acao=AlteraConta" method="POST">
 
         <Legend>Cadastro Conta</Legend>
 
@@ -23,19 +29,27 @@
        --> 
          <div class="form-group">
           <label for="agencia">Agencia</label>
-          <input type="text" class="form-control" name="agencia" id="conta" placeholder="Agencia" required>
+          <input type="text" class="form-control" name="agencia" value="${conta.agencia}" id="conta" placeholder="Agencia" required>
         </div>
         
          <div class="form-group">
           <label for="conta">Conta</label>
-          <input type="text" class="form-control" name="conta" id="conta" placeholder="Conta" required>
+          <input type="text" class="form-control" name="conta" value="${conta.conta_corrente}" id="conta" placeholder="Conta" required>
         </div>
         
         <div class="form-group">
           <label for="contabanco">Banco</label>
           
+          <% 
+              Conta conta = (Conta)request.getAttribute("conta");
              
-           <select id="contabanco" name="contabanco" class="form-control" onchange="nomearBanco()" placeholder="Nome do Banco" required> 
+              String contaNome = conta.getNome();
+              
+              
+                
+            
+            %> 
+           <select id="contabanco" name="contabanco" value="<%=contaNome%>" class="form-control" onchange="nomearBanco()" placeholder="Nome do Banco" required> 
             <option value=" "></option>
             <option value="conta itaú">Itaú</option>
             <option value="conta bb">BB</option>
@@ -43,7 +57,7 @@
           
           <div class="form-group">
               <label for="numerobanco">Número do Banco</label>  
-            <input class="form-control" name="numerobanco" type="text" id="numerobanco" value="" readonly>
+            <input class="form-control" name="numerobanco" value="${conta.banco}"type="text" id="numerobanco" value="" readonly>
           </div>      
           
           
@@ -62,7 +76,9 @@
         
        
        
-       <input type="hidden" value="${idUsuario}" name="idUsuario">
+       <!--<input type="hidden" value="${idUsuario}" name="idUsuario"> -->
+            
+       <input type="hidden" value="${conta.id}" name="id">
         
         <input class="btn btn-primary mt-3" type="submit" value="Enviar">
       </form>

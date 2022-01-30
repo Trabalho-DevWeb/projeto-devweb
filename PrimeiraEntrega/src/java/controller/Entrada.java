@@ -31,7 +31,7 @@ public class Entrada extends HttpServlet {
         HttpSession sessao = request.getSession();
         try{
         boolean adminNaoEstaLogado
-                = (sessao.getAttribute("adminLogado") == null);
+                = (sessao.getAttribute("individuoLogado") == null);
         boolean ehUmaAcaoProtegida
                 = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
 
@@ -44,7 +44,7 @@ public class Entrada extends HttpServlet {
         }
       
       String nome = null ;
-      if(paramAcao.equals("Login")){ 
+      if(paramAcao.equals("Login")){
          Login acao = new Login(); 
          nome = acao.executa(request,response);
        } else if(paramAcao.equals("LoginForm")){
@@ -52,6 +52,10 @@ public class Entrada extends HttpServlet {
            nome = acao.executa(request,response);   
        } else if(paramAcao.equals("IndexAdm")){
            IndexAdm acao = new IndexAdm();
+           nome = acao.executa(request,response);
+       } else if(paramAcao.equals("IndexUsuario")){
+           System.out.println("Chegou Aqui no IndexUsuario");
+           IndexUsuario acao = new IndexUsuario();
            nome = acao.executa(request,response);
        } else if(paramAcao.equals("FormAdmin")){
            FormAdmin acao = new FormAdmin();
@@ -62,7 +66,13 @@ public class Entrada extends HttpServlet {
        } else if(paramAcao.equals("FormUsuario")){
            FormUsuario acao = new FormUsuario();
            nome = acao.executa(request,response);
-       }  else if(paramAcao.equals("CadastroAdmin")){
+       } else if(paramAcao.equals("FormConta")){
+           FormConta acao = new FormConta();
+           nome = acao.executa(request,response);
+       } else if(paramAcao.equals("FormLancamento")){
+           FormLancamento acao = new FormLancamento();
+           nome = acao.executa(request,response);
+       } else if(paramAcao.equals("CadastroAdmin")){
            CadastroAdmin acao = new CadastroAdmin();
            nome = acao.executa(request,response);
        } else if(paramAcao.equals("CadastroCategoria")){
@@ -71,7 +81,13 @@ public class Entrada extends HttpServlet {
        } else if(paramAcao.equals("CadastroUsuario")){
            CadastroUsuario acao = new CadastroUsuario();
            nome = acao.executa(request,response);
-       } else if(paramAcao.equals("ListaAdmins")){
+       } else if(paramAcao.equals("CadastroConta")){
+           CadastroConta acao = new CadastroConta();
+           nome = acao.executa(request,response);
+       }else if(paramAcao.equals("CadastroLancamento")){
+           CadastroLancamento acao = new CadastroLancamento();
+           nome = acao.executa(request,response);
+       }else if(paramAcao.equals("ListaAdmins")){
            ListaAdmins acao = new ListaAdmins();
            nome = acao.executa(request,response);
        } else if(paramAcao.equals("ListaCategorias")){
@@ -80,7 +96,13 @@ public class Entrada extends HttpServlet {
        } else if(paramAcao.equals("ListaUsuarios")){
            ListaUsuarios acao = new ListaUsuarios();
            nome = acao.executa(request,response);
-       } else if(paramAcao.equals("MostraAdmin")){
+       } else if(paramAcao.equals("ListaContas")){
+           ListaContas acao = new ListaContas();
+           nome = acao.executa(request,response);
+       } else if(paramAcao.equals("ListaLancamentos")){
+           ListaLancamentos acao = new ListaLancamentos();
+           nome = acao.executa(request,response);
+       }  else if(paramAcao.equals("MostraAdmin")){
            MostraAdmin acao = new MostraAdmin();
            nome = acao.executa(request,response);
         } else if(paramAcao.equals("MostraCategoria")){
@@ -89,7 +111,13 @@ public class Entrada extends HttpServlet {
         }  else if(paramAcao.equals("MostraUsuario")){
            MostraUsuario acao = new MostraUsuario();
            nome = acao.executa(request,response);
-        }  else if(paramAcao.equals("RemoveAdmin")){
+        }  else if(paramAcao.equals("MostraConta")){
+           MostraConta acao = new MostraConta();
+           nome = acao.executa(request,response);
+        } else if(paramAcao.equals("MostraLancamento")){
+           MostraLancamento acao = new MostraLancamento();
+           nome = acao.executa(request,response);
+        } else if(paramAcao.equals("RemoveAdmin")){
             RemoveAdmin acao = new RemoveAdmin();
             nome = acao.executa(request,response);
         } else if(paramAcao.equals("RemoveCategoria")){
@@ -98,7 +126,13 @@ public class Entrada extends HttpServlet {
         }  else if(paramAcao.equals("RemoveUsuario")){
             RemoveUsuario acao = new RemoveUsuario();
             nome = acao.executa(request,response);
-        } else if(paramAcao.equals("AlteraAdministrador")){
+        }  else if(paramAcao.equals("RemoveConta")){
+            RemoveConta acao = new RemoveConta();
+            nome = acao.executa(request,response);
+        }  else if(paramAcao.equals("RemoveLancamento")){
+            RemoveLancamento acao = new RemoveLancamento();
+            nome = acao.executa(request,response);
+        }else if(paramAcao.equals("AlteraAdministrador")){
             AlteraAdministrador acao = new AlteraAdministrador();
             nome = acao.executa(request,response);
         } else if(paramAcao.equals("AlteraCategoria")){
@@ -106,6 +140,12 @@ public class Entrada extends HttpServlet {
             nome = acao.executa(request,response);
         } else if(paramAcao.equals("AlteraUsuario")){
             AlteraUsuario acao = new AlteraUsuario();
+            nome = acao.executa(request,response);
+        }else if(paramAcao.equals("AlteraLancamento")){
+            AlteraLancamento acao = new AlteraLancamento();
+            nome = acao.executa(request,response);
+        }else if(paramAcao.equals("AlteraConta")){
+            AlteraConta acao = new AlteraConta();
             nome = acao.executa(request,response);
         }else if(paramAcao.equals("Logout")){
             Logout acao = new Logout();

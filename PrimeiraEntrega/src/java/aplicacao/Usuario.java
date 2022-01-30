@@ -5,6 +5,8 @@
  */
 package aplicacao;
 
+import java.util.List;
+
 /**
  *
  * @author Ramos
@@ -15,6 +17,7 @@ public class Usuario {
     private String senha;
     private Integer id;
     private String bloqueado;
+   
 
     public Integer getId() {
         return id;
@@ -23,6 +26,9 @@ public class Usuario {
     public void setId(Integer id) {
         this.id = id;
     }   
+
+   
+    
     
     public String getNome() {
         return nome;

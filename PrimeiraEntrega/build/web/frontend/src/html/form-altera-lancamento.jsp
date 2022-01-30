@@ -1,3 +1,9 @@
+<%-- 
+    Document   : form-altera-lancamento
+    Created on : 30/01/2022, 03:31:15
+    Author     : Ramos
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
 <%@page import="aplicacao.Conta" %>
@@ -18,7 +24,7 @@
 
     <main>
         <div class="container"> 
-            <form action="/entrada?acao=CadastroLancamento" method="POST">
+            <form action="/entrada?acao=AlteraLancamento" method="POST">
 
                 <Legend>Lançamento</Legend>
 
@@ -32,12 +38,12 @@
 
                 <div class="form-group mt-3">
                   <label for="valor">Valor</label>
-                  <input type="text" name="valor" class="form-control" id="valor"required>
+                  <input type="text" name="valor" value="${lancamento.valor}"class="form-control" id="valor"required>
                 </div>
 
                 <div class="form-group">
                   <label for="nome">Data</label>
-                  <input type="date" name="data" class="form-control" id="data"required>
+                  <input type="date" name="data" value="${lancamento.data}" class="form-control" id="data"required>
                 </div>
 
                 <div class="form-group">
@@ -61,29 +67,22 @@
           
                  <div class="form-group mt-3">
                   <label for="descricao">Descrição</label>
-                  <input type="" name="descricao" class="form-control" id="descricao" required>
+                  <input type="" name="descricao" value="${lancamento.descricao}"class="form-control" id="descricao" required>
                 </div>   
                     
                 <div class="form-group mt-3">
                   <label for="conta">Conta</label>
                   <!--<input type="text" name="conta" class="form-control" id="conta" required> -->
-                  <select name="conta" class="form-control" id="conta" required>
-                      <% 
-                         
-                        
-                          List<Conta> contas = (List<Conta>) request.getAttribute("contas");
-                          
-                          for(Conta conta : contas){
-                       
-                        %>               
-                        <option value="<%=conta.getId()%>"><%=conta.getConta_corrente()%></option>
-                        <% }
-                        %>                  
+                  <select name="conta" class="form-control" id="conta" readonly>
+                                   
+                        <option value="${conta.conta_corrente}">${conta.conta_corrente}</option>
+                                         
                   </select>
                 </div>
                 
                 <!--<input type="hidden" value="${idUsuario}" name="idUsuario"> -->
-
+                        
+                <input type="hidden" value="${lancamento.id}" name="id"> 
                 <input class="btn btn-primary" type="submit" value="Lançar">
             </form>
 

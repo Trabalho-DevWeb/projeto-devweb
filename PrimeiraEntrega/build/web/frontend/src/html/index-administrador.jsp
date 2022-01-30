@@ -20,8 +20,8 @@
         </header>
             <main>
             <div class="container mt-3">
-                <p>CPF: ${adminLogado.CPF}</p>
-                <p>Nome: ${adminLogado.nome}</p>
+                <p>CPF: ${individuoLogado.CPF}</p>
+                <p>Nome: ${individuoLogado.nome}</p>
 
                 <a style="color:white" href="entrada?acao=Logout"><button class="btn btn-primary">Sair</button></a>
             </div>
