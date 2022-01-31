@@ -37,15 +37,17 @@ public class CadastroAdmin implements Acao{
        
        AdminDAO admindao = new AdminDAO();
        
-       if(admindao.gravar(adm)){
-            request.setAttribute("nomeAdm",nome );
-            return "forward:sucessoCadastroAdmin.jsp";
-       } else{
-           return "forward:erroCadastro.jsp";
+       
+       if(admindao.getAdminPorCPF(CPF)){
+            if(admindao.gravar(adm)){
+                 request.setAttribute("nomeAdm",nome );
+                 return "forward:sucessoCadastroAdmin.jsp";
+            } else{
+                return "forward:erroCadastro.jsp";
+            }
        }
        
-       
-       
+       return "forward:erroAdminExistente.jsp";
 //        if(banco.existeAdmin(CPF, senha) == null){
 //            banco.adicionaAdm(CPF, nome, senha, email);
 //            request.setAttribute("nomeAdm",nome );

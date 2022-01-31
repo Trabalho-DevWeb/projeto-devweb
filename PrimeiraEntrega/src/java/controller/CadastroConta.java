@@ -42,15 +42,17 @@ public class CadastroConta implements Acao {
        
        ContaDAO contadao = new ContaDAO();
        
-       
-       
-       
-        if(contadao.gravar(conta,usuario)){
+        if(contadao.getContaPorContaCorrente(conta_corrente)){
+            if(contadao.gravar(conta,usuario)){
             request.setAttribute("nomeConta",conta);
             return "forward:sucessoCadastroConta.jsp";
-        } else {
-            return "forward:erroCadastroConta.jsp";
+            } else {
+                return "forward:erroCadastroConta.jsp";
+            }
+            
         }
+       
+        return "forward:erroContaExistente.jsp";
         
        } catch(Exception e){
            System.out.println("Exceção - Cadastro Conta");

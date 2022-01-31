@@ -178,6 +178,29 @@ public class AdminDAO {
             return false;
         }
     }
+
+    public boolean getAdminPorCPF(String cpf) {
+        Administrador adm = new Administrador();
+        try {
+            String sql = "SELECT * FROM administradores WHERE cpf = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                adm.setId(rs.getInt("id"));
+                adm.setNome( rs.getString("nome") );
+                adm.setCPF(rs.getString("cpf"));
+                adm.setSenha(rs.getString("senha"));
+               return false;
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return true;
+    }
 }
 
 

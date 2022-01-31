@@ -129,6 +129,34 @@ public class ContaDAO {
         return Conta;
     }
     
+     public boolean getContaPorContaCorrente( String conta ) {
+        Conta Conta = new Conta();
+        try {
+            String sql = "SELECT * FROM contas WHERE conta_corrente = ? ";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, conta);
+            
+            ResultSet rs = ps.executeQuery();
+            
+           
+            
+            if ( rs.next() ) {
+                Conta.setId(rs.getInt("id"));
+                Conta.setNome( rs.getString("nome_conta") );
+                Conta.setBanco(rs.getString("banco"));
+                Conta.setAgencia(rs.getString("agencia"));
+                Conta.setConta_corrente(rs.getString("conta_corrente"));
+               return false;
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+            
+        }
+       return true;
+    }
+     
+     
     public boolean gravar( Conta conta, String usuario ) {
         try {
             
@@ -194,6 +222,10 @@ public class ContaDAO {
     
     public boolean excluir( Integer id ) {
         try {
+            String sqlAuxiliar = "DELETE FROM lancamentos WHERE id_conta = ?";
+            PreparedStatement psAuxiliar = conexao.prepareStatement(sqlAuxiliar);
+            psAuxiliar.setInt(1, id);
+            psAuxiliar.execute();
             String sql = "DELETE FROM contas WHERE id = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);

@@ -186,6 +186,30 @@ public class UsuarioDAO {
             return false;
         }
     }
+
+    public boolean getUserPorCPF(String cpf) {
+        Usuario usuario = new Usuario();
+        try {
+            String sql = "SELECT * FROM usuarios WHERE cpf = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome( rs.getString("nome") );
+                usuario.setCPF(rs.getString("cpf"));
+                usuario.setSenha(rs.getString("senha"));
+              return false; 
+            }
+            
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return true;
+    }
     
    
     

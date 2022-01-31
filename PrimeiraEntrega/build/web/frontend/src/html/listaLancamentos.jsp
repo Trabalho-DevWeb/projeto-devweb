@@ -4,6 +4,7 @@
     Author     : Ramos
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*,aplicacao.Lancamento" %>
 
@@ -27,6 +28,10 @@
                         <th scope="col"><b>Lançamentos</b></th>
                         <th scope="col"><b>Data de Lançamento</b></th>
                         <th scope="col"><b>Valor</b></th>
+                        <th scope="col"><b>Operação</b></th>
+                        <th scope="col"><b>Descrição</b></th>
+                        <th scope="col"><b></b></th>
+                        <th scope="col"><b></b></th>
                        
                     </tr>  
                     <% 
@@ -38,8 +43,10 @@
                         <td><%=lancamento.getCategoria()%> </td>
                         <td><%=lancamento.getData()%></td>
                         <td><%=lancamento.getValor()%></td>
-                        <td><a href="entrada?acao=MostraLancamento&id=<%=lancamento.getId()%>">Alterar</a></td>
-                        <td><a href="entrada?acao=RemoveLancamento&id=<%=lancamento.getId()%>">Remover</a></td>
+                        <td><%=lancamento.getOperacao()%></td>
+                        <td><%=lancamento.getDescricao()%></td>
+                        <td><a href="entrada?acao=MostraLancamento&id=<%=lancamento.getId()%>&idConta=${idConta}">Alterar</a></td>
+                        <td><a href="entrada?acao=RemoveLancamento&id=<%=lancamento.getId()%>&idConta=${idConta}">Remover</a></td>
                         
                     </tr>
                     <%       
@@ -77,7 +84,7 @@
                     <tr>
                         <td><%=somaCredito%> </td>
                         <td><%=somaDebito%></td>
-                        <td><%=saldo%></td>
+                        <td><%=Math.round(saldo)%></td>
                     
                         
                     </tr>
@@ -85,6 +92,8 @@
                 </thead>
             </table>
         </main>
+                        
+                     
         <%@include file="scripts.jsp" %>
     </body>
 </html>

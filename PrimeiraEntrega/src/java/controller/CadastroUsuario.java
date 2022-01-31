@@ -43,14 +43,16 @@ public class CadastroUsuario implements Acao {
        
        
        
+       if(usuariodao.getUserPorCPF(CPF)){
+            if(usuariodao.gravar(usuario)){
+                request.setAttribute("nomeUser",nome );
+                return "forward:sucessoCadastroUsuario.jsp";
+            } else {
+                return "forward:erroCadastro.jsp";
+            }
+       }
        
-        if(usuariodao.gravar(usuario)){
-            request.setAttribute("nomeUser",nome );
-            return "forward:sucessoCadastroUsuario.jsp";
-        } else {
-            return "forward:erroCadastro.jsp";
-        }
-        
+       return "forward:erroUsuarioExistente.jsp";
        } catch(Exception e){
            System.out.println("Exceção - Cadastro Usuario");
            return "forward:erroCadastro.jsp";

@@ -208,7 +208,7 @@ public class LancamentoDAO {
        
     public boolean excluir( int id ) {
         try {
-            String sql = "DELETE FROM Lancamentos WHERE id = ?";
+            String sql = "DELETE FROM lancamentos WHERE id = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);
             ps.execute();
